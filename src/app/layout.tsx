@@ -1,6 +1,8 @@
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
+import NavBar from "~/components/NavBar";
+import { ClerkProvider, GoogleOneTap, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Create T3 App",
@@ -14,8 +16,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+    <ClerkProvider>
+    <html lang="en">
+      <body>
+        <header className="fixed">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </header>
+        <main>
+          {children}
+        </main>
+        <footer>
+          <NavBar></NavBar>
+        </footer>
+      </body>
     </html>
+  </ClerkProvider>
   );
 }
