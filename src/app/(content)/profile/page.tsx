@@ -7,7 +7,6 @@ export default function ProfilePage() {
         <h1 className="text-5xl font-extrabold tracking-tight text-black sm:text-[5rem]">
           Profile page
         </h1>
-        <NavBar></NavBar>
       </div>
     </main>
   );
