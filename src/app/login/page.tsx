@@ -1,7 +1,7 @@
 import { GoogleOneTap, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { User, currentUser } from "@clerk/nextjs/server";
-import { useEffect, useMemo, useRef, useState } from "react";
-import NavBar from "~/components/NavBar";
+import { redirect } from "next/navigation";
+
 
 export default async function LoginPage() {
    const user = await currentUser();
@@ -17,7 +17,7 @@ export default async function LoginPage() {
             </SignInButton>
           </SignedOut>
           <SignedIn>
-            <h2 className="text-2xl font-bold">{user?.firstName+" "+user?.lastName}</h2>
+            { redirect("/profile") }
           </SignedIn>
         </div>
       </main>

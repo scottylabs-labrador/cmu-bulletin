@@ -1,4 +1,3 @@
-"use client";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -44,25 +43,8 @@ function uploadImage(event: React.FormEvent<HTMLInputElement>, userId: string | 
     console.log("Uploaded image")
 }
 
-export default function NavBar({userId}: {userId: string | undefined}) {
-
-    return (
-        <div className="bg-black">
-        <div className="h-[5vh] grid grid-cols-3 gap-4 px-4 py-4 overflow-hidden">
-            <a href="/feed" className="text-white">
-                Feed
-            </a>
-            <form method="POST" target="/api/upload">
-            <label htmlFor="photoupload" className="text-white">Upload
-                <input id="photoupload" type="file" className="invisible" accept=".jpg,.png,.heic" onChange={e => uploadImage(e, userId)}>
-                </input>
-            </label>
-            </form>
-            <a href="/profile" className="text-white">
-                Profile
-            </a>
-        </div>
-        </div>
-    );
-    }
-
+// Post request handler
+export function POST(req, res) {
+    console.log(req)
+    res.status(200).json({ message: "Uploaded image" })
+}
