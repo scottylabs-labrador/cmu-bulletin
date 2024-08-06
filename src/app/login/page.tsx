@@ -1,10 +1,8 @@
-import { GoogleOneTap, SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
-import { User, currentUser } from "@clerk/nextjs/server";
+import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 
 export default async function LoginPage() {
-   const user = await currentUser();
     return (
       <main className="flex h-[95vh] flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">

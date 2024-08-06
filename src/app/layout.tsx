@@ -1,7 +1,8 @@
 import "~/styles/globals.css";
 
-import NavBar from "~/components/NavBar";
 import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
+import ReduxProvider from "./StoreProvider";
+
 
 export const metadata = {
   title: "BoilerGram",
@@ -16,18 +17,20 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className="bg-orange-50">
-        <header className="fixed">
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
-        <main>
-          {children}
-        </main>
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang="en">
+        <body className="bg-orange-50">
+          <header className="fixed">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          <main>
+            {children}
+          </main>
+        </body>
+      </html>
+    </ReduxProvider>
   </ClerkProvider>
   );
 }

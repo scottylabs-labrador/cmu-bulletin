@@ -1,3 +1,9 @@
+"use server";
+
+/**
+ * This is a server-side function.  It will not be included in the client bundle which is good because of the Firebase SDK.
+ */
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -27,12 +33,14 @@ const usersRef = collection(db, "Users");
 const photosRef = collection(db, "Photos");
 const storageRef = getStorage(app);
 
-async function uploadImage(data: FormData, userId: string | undefined) {
-    console.log(data, userId)
-    const photo_uuid = crypto.randomUUID();
-    const file = await data.getAll('file')[0];
+export async function postImage(data: FormData, userId: string | undefined) {
+    const file = data.get("uploadedImage") as File;
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
 
-    uploadBytes(ref(storageRef, ('images/' + photo_uuid)), file)
+    const photo_uuid = crypto.randomUUID();
+
+    uploadBytes(ref(storageRef, ('images/' + String(photo_uuid))), buffer)
     setDoc(doc(photosRef, photo_uuid), {
         "reference": `/boilerplate-7545b.appspot.com/images/${photo_uuid}`,
         "uploadTime": new Date(),
@@ -42,10 +50,4 @@ async function uploadImage(data: FormData, userId: string | undefined) {
         "Posts": arrayUnion(photo_uuid)
     })
     console.log("Uploaded image")
-}
-
-// Post request handler
-export function POST(req: Request) {
-    console.log(req)
-    return uploadImage(req.formData(), req.body.userId)
 }

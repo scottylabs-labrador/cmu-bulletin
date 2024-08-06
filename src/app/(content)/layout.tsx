@@ -26,7 +26,7 @@ export default async function ContentLayout({
             </main>
         </div>
         <footer>    
-            <NavBar userId={user?.emailAddresses[0]?.emailAddress}/>
+            <NavBar />
         </footer>
     </React.Fragment>
   );
