@@ -21,11 +21,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 const usersRef = collection(db, "Users");
 const photosRef = collection(db, "Photos");
-const storageRef = getStorage(app);
+export const storageRef = getStorage(app);
 
 async function uploadImage(data: FormData, userId: string | undefined) {
     console.log(data, userId)
@@ -34,7 +34,7 @@ async function uploadImage(data: FormData, userId: string | undefined) {
 
     uploadBytes(ref(storageRef, ('images/' + photo_uuid)), file)
     setDoc(doc(photosRef, photo_uuid), {
-        "reference": `/boilerplate-7545b.appspot.com/images/${photo_uuid}`,
+        "reference": `images/${photo_uuid}`,
         "uploadTime": new Date(),
         "userId": userId
     })
