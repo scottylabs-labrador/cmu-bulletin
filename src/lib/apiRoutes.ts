@@ -6,7 +6,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { addDoc, getDoc, getFirestore } from "firebase/firestore";
 import { collection, doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore"; 
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -46,8 +46,8 @@ export async function postImage(data: FormData, userId: string | undefined) {
         "uploadTime": new Date(),
         "userId": userId
     })
-    updateDoc(doc(usersRef, userId), {
+
+    setDoc(doc(usersRef, userId), {
         "Posts": arrayUnion(photo_uuid)
-    })
-    console.log("Uploaded image")
+    }, { merge: true })
 }
