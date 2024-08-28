@@ -1,10 +1,10 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
 import { useDispatch } from "react-redux";
-import { postImage } from "~/lib/apiRoutes";
+import { postImage } from "~/lib/api/postImage";
 import { setIsModalOpen } from "~/lib/features/uiSlice";
 import { useAppSelector } from "~/lib/hooks";
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 
 export default function UploadModal() {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function UploadModal() {
     if (!isModalOpen || !userEmail)
         return
 
-    const handleFileChange = (e) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             setFileSelected(true); 
         } else {
@@ -30,7 +30,7 @@ export default function UploadModal() {
     };
 
     return (
-        <div className="bg-[#00000010] fixed top-0 left-0 h-screen w-screen flex justify-center items-center">
+        <div className="bg-[#000000A0] z-50 fixed top-0 left-0 h-screen w-screen flex justify-center items-center">
             <div className="bg-white w-[40%] h-[50%] relative flex flex-col items-center justify-center p-4 shadow-lg rounded-md">
                 <button onClick={() => dispatch(setIsModalOpen(false))} className="absolute top-4 left-4 text-black text-2xl">
                     &times;

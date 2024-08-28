@@ -10,19 +10,19 @@ export default function NavBar() {
     const dispatch = useDispatch();
     return (
         <Fragment>
-            <div className="bg-black">
-            <div className="h-[5vh] grid grid-cols-3 gap-4 px-4 py-4 overflow-hidden">
-                <a href="/feed" className="text-white">
-                    Feed
-                </a>
-                <p className="text-white" onClick={() => dispatch(setIsModalOpen(true))}>
-                    Upload
-                </p>
-                <a href="/profile" className="text-white">
-                    Profile
-                </a>
-            </div>
-            </div>
+            
+                <div className="grid grid-rows-3 gap-y-6 px-4 pt-[50px] overflow-hidden text-white">
+                    <div className="font-bold text-lg">InstaPlate.</div>
+                    <a href="/feed">
+                        Feed
+                    </a>
+                    <p onClick={() => dispatch(setIsModalOpen(true))}>
+                        Upload
+                    </p>
+                    <a href="/profile">
+                        Profile
+                    </a>
+                </div>
             <UploadModal/>
         </Fragment>
     );

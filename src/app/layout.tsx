@@ -3,7 +3,6 @@ import "~/styles/globals.css";
 import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
 import ReduxProvider from "./StoreProvider";
 
-
 export const metadata = {
   title: "BoilerGram",
   description: "Your new favorite social media platform.",
@@ -20,11 +19,6 @@ export default function RootLayout({
     <ReduxProvider>
       <html lang="en">
         <body className="bg-orange-50">
-          <header className="fixed">
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
           <main>
             {children}
           </main>

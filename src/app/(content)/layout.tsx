@@ -1,9 +1,7 @@
 import "~/styles/globals.css";
 
 import NavBar from "~/components/NavBar";
-import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
 import React from "react";
-import { currentUser } from "@clerk/nextjs/server";
 
 export const metadata = {
   title: "BoilerGram",
@@ -16,18 +14,19 @@ export default async function ContentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await currentUser();
 
   return (
-    <React.Fragment>
-        <div className="flex justify-evenly">
-            <main className="bg-white w-4/6">
-                {children}
-            </main>
+    <div className="flex h-screen w-screen">
+      <div className="bg-black left-0 top-0 flex-none w-[15vw] h-full">
+        <NavBar />
+      </div>
+      <div className="flex-initial w-[85vw]">
+        <div className="flex justify-center">
+          <main className="bg-black h-screen fixed overflow-auto w-[600px]">
+              {children}
+          </main>
         </div>
-        <footer>    
-            <NavBar />
-        </footer>
-    </React.Fragment>
+      </div> 
+    </div>
   );
 }
