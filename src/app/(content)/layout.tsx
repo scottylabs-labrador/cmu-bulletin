@@ -22,7 +22,7 @@ export default async function ContentLayout({
       </div>
       <div className="flex-initial w-[85vw]">
         <div className="flex justify-center">
-          <main className="bg-black h-screen fixed overflow-auto w-[600px]">
+          <main className="bg-black h-screen fixed w-[600px] container">
               {children}
           </main>
         </div>

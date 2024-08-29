@@ -18,7 +18,7 @@ export default function RootLayout({
     <ClerkProvider>
     <ReduxProvider>
       <html lang="en">
-        <body className="bg-orange-50">
+        <body className="bg-white">
           <main>
             {children}
           </main>

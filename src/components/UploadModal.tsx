@@ -5,13 +5,15 @@ import { postImage } from "~/lib/api/postImage";
 import { setIsModalOpen } from "~/lib/features/uiSlice";
 import { useAppSelector } from "~/lib/hooks";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import Image from "next/image";
+import uploadIcon from "../../public/assets/upload.svg";
 
 export default function UploadModal() {
     const dispatch = useDispatch();
     const isModalOpen = useAppSelector(state => state.ui.isModalOpen);
     const {isLoaded, isSignedIn, user} = useUser();
 
-    const [fileSelected, setFileSelected] = useState(false);
+    const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
     if (!isSignedIn || !user)
         return
@@ -23,9 +25,10 @@ export default function UploadModal() {
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setFileSelected(true); 
+            const tmp_url = URL.createObjectURL(e.target.files[0]);
+            setSelectedFile(tmp_url);
         } else {
-            setFileSelected(false); 
+            setSelectedFile(null); 
         }
     };
 
@@ -36,21 +39,15 @@ export default function UploadModal() {
                     &times;
                 </button>
 
-                <div className="bg-gray-200 p-4 rounded-full mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth={2} 
-                    stroke="currentColor" 
-                    className="w-12 h-12 text-gray-600">
-                        <path strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        d="M12 16v-8m-4 4l4-4m0 0l4 4M4 12a8 8 0 1016 0 8 8 0 10-16 0z" />
-                    </svg>
-                </div>
+                <Image src={selectedFile || uploadIcon} alt="Selected Image" width={200} height={200} className="bg-gray-200 p-4 rounded-full mb-4"/>
 
                 <p className="text-lg font-semibold mb-6">Upload your file here!</p>
-                <form action={(e) => postImage(e, userEmail)} className="flex flex-col items-center">
+                <form action={(e) => {
+                        postImage(e, userEmail); 
+                        dispatch(setIsModalOpen(false))
+                    }} 
+                    className="flex flex-col items-center"
+                >
                     <label className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mb-4 cursor-pointer">
                         Choose File
                         <input type="file" 
@@ -59,10 +56,13 @@ export default function UploadModal() {
                         className="hidden" 
                         onChange={handleFileChange}/>
                     </label>
-                    <button type="submit" 
-                    className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
-                    disabled={!fileSelected}>
-                        Post</button>
+                    <button 
+                        type="submit" 
+                        className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
+                        disabled={!selectedFile}
+                    >
+                        Post
+                    </button>
                 </form>
             </div>
         </div>
