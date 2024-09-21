@@ -11,6 +11,7 @@ export default function FeedPage() {
   const [isScrollNearBottom, setIsScrollNearBottom] = useState(false);
   const lastPhoto = useRef<string | null>(null);
 
+  // This lazily loads the photos, avoiding lag.
   function onScroll(e: React.UIEvent<HTMLDivElement>) {
     const target = e.target as HTMLDivElement;
     if (target.scrollHeight - target.scrollTop <= 2 * target.clientHeight) {
@@ -28,10 +29,8 @@ export default function FeedPage() {
       if (user) {
         // We know this is safe because we check if the user is signed in
         const [paginatedPhotos, lastSnapshot] = await getFeed(user?.emailAddresses[0]?.emailAddress as string, lastPhoto.current, 5);
-        console.log(paginatedPhotos, lastSnapshot)
         lastPhoto.current = lastSnapshot || null;
         setPhotos([...photos, ...paginatedPhotos]);
-        console.log(photos)
       }
     };
 
@@ -39,7 +38,7 @@ export default function FeedPage() {
   }, [user, isScrollNearBottom]);
 
   const photoCards = photos.map((photo) => (
-    photo && <PostCard key={photo.id} photo={photo} />
+    photo && <></> // What should go here?  How do we render a post card?
   ))
 
   return (
