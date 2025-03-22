@@ -1,0 +1,83 @@
+[33mcommit bd2a09c70f59ab7df31cd12beaf5348f7aafa7f4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: vbanwait5 <veerbanwait5@gmail.com>
+Date:   Sat Mar 22 16:55:51 2025 -0400
+
+    env
+
+[33mcommit 202cfd601f1eb8ea243e9d3d40d5f53b3f44580d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Theo Urban <theo.s.urban@gmail.com>
+Date:   Sat Sep 28 16:19:02 2024 -0400
+
+    Update README.md
+
+[33mcommit 3481fd5080b32dd4780a5c34fd83c806195a85a9[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Sat Sep 21 15:52:35 2024 -0400
+
+    Pre-WS
+
+[33mcommit 46b6614716e9f844b3ab4e482b555c9295d8b16f[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Wed Aug 28 23:24:35 2024 -0400
+
+    No type errors, lazy loading / infinite scroll
+
+[33mcommit d7f16a90695fed265f0c605c3ab502564d1a70d2[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Wed Aug 28 16:24:41 2024 -0400
+
+    Clean up types and APIs
+
+[33mcommit 5319c5fed21e9921383acd48f91faad207d5d27c[m
+Author: JessamineQ <jessamine.qu0@gmail.com>
+Date:   Thu Aug 22 12:38:59 2024 -0500
+
+    clerk signout + profile page and upload photo UI
+
+[33mcommit 72d2343c00cb57595b49f634142bfdd6cdc32a5f[m
+Author: JessamineQ <jessamine.qu0@gmail.com>
+Date:   Tue Aug 13 22:47:51 2024 -0500
+
+    add profile page ui
+
+[33mcommit 0b821d71c8b3e9e0a3e9ff636a8d13b40a8dfad7[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Tue Aug 13 23:03:12 2024 -0400
+
+    Set new user on first upload
+
+[33mcommit 1ef39eb1c3cc073b75392898362d9741120f3e5a[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Mon Aug 5 22:45:12 2024 -0400
+
+    Make a proper upload modal, add redux, use server function for upload
+
+[33mcommit 223740202a19f78a197d2d2d987fabd109b36a61[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Tue Jul 30 22:47:37 2024 -0400
+
+    Add FB
+
+[33mcommit a91ba4ee3e616d7def5554367087b49048c85a27[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Sat Jul 20 13:44:52 2024 -0400
+
+    better styling
+
+[33mcommit a3a2218ffe48feb4a6730ae8633a9392722ec8c9[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Fri Jul 19 23:33:08 2024 -0400
+
+    Add clerk, routing for login, login button, userbutton, tabs layout
+
+[33mcommit f6e1e042661be15dbea2c9126bdd86e6c388a08f[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Tue Jul 9 22:17:54 2024 -0400
+
+    Simple layout w/ navbar
+
+[33mcommit 9e1c1fd8ba427c9bc5c0fa37a95cf5b1288c93d7[m
+Author: Theodor Urban <theo.s.urban@gmail.com>
+Date:   Wed Jul 3 20:37:42 2024 -0400
+
+    First commit create-t3-app
